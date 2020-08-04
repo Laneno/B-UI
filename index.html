@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;box-sizing: border-box;}
+        :root{
+
+            --button-height: 32px;              /*高度*/
+            --font-size: 14px;                  /*字体*/
+            --button-bg: white;                 /*背景*/
+            --button-active-bg: #eee;           /*背景-按下*/
+            --border-radius: 4px;               /*边框圆角*/
+            --color: #333;                      /*文字颜色*/
+            --border-color: #999;               /*边框颜色*/
+            --border-color-hover: #666;         /*边框颜色-hover*/
+        }
+        #app{
+            margin: 20px;
+        }
+        body{
+            font-size: var(--font-size);
+        }
+    </style>
+    <style>
+        .b-button{
+            font-size: var(--font-size);
+            height: var(--button-height);
+            padding: 0 1em;         /*按钮左侧空一个字，不在按钮上加宽度width*/
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            background: var(--button-bg);
+        }
+        .b-button:hover{            /*hover悬停时，边框变深*/
+            border-color: var(--border-color-hover);
+        }
+        .b-button:active{           /*active点击时，背景变深*/
+            background-color: var(--button-active-bg);
+        }
+        .b-button:focus{            /*去掉按钮点击的蓝色边框*/
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <b-button></b-button>
+    {{message}}
+</div>
+
+<script src="./node_modules/vue/dist/vue.min.js"></script>
+<script src="./button.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            message: 'B-UI'
+        }
+    })
+</script>
+</body>
+</html>
