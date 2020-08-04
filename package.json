@@ -1,0 +1,23 @@
+{
+  "name": "b-ui",
+  "version": "0.0.1",
+  "description": " UI 框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BraveWangDev/B-UI.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "Brave",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BraveWangDev/B-UI/issues"
+  },
+  "homepage": "https://github.com/BraveWangDev/B-UI#readme"
+}
