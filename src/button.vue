@@ -22,14 +22,24 @@
     <!--<button class="b-button" :class="{'icon-undefined': true}">-->
     <!--<button class="b-button" :class="{'icon-left': true}">-->
     <!--<button class="b-button" :class="{'icon-right': true}">-->
+    <!--<button class="b-button" :class="{[`icon-${iconPosition}`]: true}">-->
+        <!--&lt;!&ndash;v-if="icon" 当不传 icon 时，icon 的占位消失&ndash;&gt;-->
+        <!--<svg v-if="icon" class="icon">-->
+            <!--&lt;!&ndash;:是 v-bind 缩写，动态赋值&ndash;&gt;-->
+            <!--&lt;!&ndash;`#i-${icon}` 是一个js 字符串&ndash;&gt;-->
+            <!--&lt;!&ndash;${data}是一个模板字符串的插值，来自props&ndash;&gt;-->
+            <!--<use :xlink:href="`#i-${icon}`"></use>-->
+        <!--</svg>-->
+        <!--&lt;!&ndash;由于 slot 不能加 class，所以在外层 div 上添加 class&ndash;&gt;-->
+        <!--<div class="content">-->
+            <!--<slot></slot>-->
+        <!--</div>-->
+    <!--</button>-->
+
+    <!--将 icon 部分体检为 b-icon 组件-->
     <button class="b-button" :class="{[`icon-${iconPosition}`]: true}">
-        <!--v-if="icon" 当不传 icon 时，icon 的占位消失-->
-        <svg v-if="icon" class="icon">
-            <!--:是 v-bind 缩写，动态赋值-->
-            <!--`#i-${icon}` 是一个js 字符串-->
-            <!--${data}是一个模板字符串的插值，来自props-->
-            <use :xlink:href="`#i-${icon}`"></use>
-        </svg>
+        <!--使用b-button中接收到的icon参数，继续传入b-icon组件中-->
+        <b-icon v-if="icon" :name="icon"></b-icon>
         <!--由于 slot 不能加 class，所以在外层 div 上添加 class-->
         <div class="content">
             <slot></slot>
@@ -65,7 +75,7 @@
         display: inline-flex;
         justify-content: center;    /*jfc:c*/
         align-items: center;        /*alc:c*/
-        vertical-align: top;        /*va:t  解决内联元素对不齐问题，只要不是默认值baseline都可以*/
+        vertical-align: middle;        /*va:t  解决内联元素对不齐问题，只要不是默认值baseline都可以*/
         /*&表示当前的选择器*/
         &:hover{            /*hover悬停时，边框变深*/
             border-color: var(--border-color-hover);
