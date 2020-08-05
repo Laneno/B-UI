@@ -68,6 +68,8 @@
         /*默认: icon在左，content在右*/
         > .icon{
             order: 1;
+            margin-right:.3em;
+            margin-left:0;
         }
         > .content{
             order: 2;
@@ -76,6 +78,8 @@
         &.icon-right{
             > .icon{
                 order: 2;
+                margin-left:.3em;
+                margin-right: 0;
             }
             > .content{
                 order: 1;
