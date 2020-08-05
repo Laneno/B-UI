@@ -42,16 +42,22 @@
 </head>
 <body>
 <div id="app">
-    <div id="app">
-        <!--将 svg 的 icon 标签，移到组件内部，并传参icon-->
-        <b-button icon="settings">
-            按钮传参
-        </b-button>
-        <!--不传 icon-->
-        <b-button>
-            不传icon
-        </b-button>
-    </div>
+    <!--将 svg 的 icon 标签，移到组件内部，并传参icon-->
+    <b-button icon="settings">
+        按钮传参
+    </b-button>
+    <!--不传 icon-->
+    <b-button>
+        不传icon
+    </b-button>
+    <!--icon-position控制 icon 的左右位置-->
+    <!--注意：组件内部参数名为iconPosition，外部传参为icon-position-->
+    <b-button icon="settings" icon-position="left">
+        左侧 icon
+    </b-button>
+    <b-button icon="settings" icon-position="right">
+        右侧 icon
+    </b-button>
 </div>
 <script src="./src/app.js"></script>
 <!--引入图标库-->
