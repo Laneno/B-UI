@@ -39,7 +39,7 @@
     <!--将 icon 部分体检为 b-icon 组件-->
     <button class="b-button" :class="{[`icon-${iconPosition}`]: true}">
         <!--使用b-button中接收到的icon参数，继续传入b-icon组件中-->
-        <b-icon v-if="icon" :name="icon"></b-icon>
+        <b-icon class="icon" v-if="icon" :name="icon"></b-icon>
         <!--由于 slot 不能加 class，所以在外层 div 上添加 class-->
         <div class="content">
             <slot></slot>
