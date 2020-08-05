@@ -40,6 +40,8 @@
     <button class="b-button" :class="{[`icon-${iconPosition}`]: true}">
         <!--使用b-button中接收到的icon参数，继续传入b-icon组件中-->
         <b-icon class="icon" v-if="icon" :name="icon"></b-icon>
+        <!--添加 class：loading-->
+        <b-icon class="loading" name="loading"></b-icon>
         <!--由于 slot 不能加 class，所以在外层 div 上添加 class-->
         <div class="content">
             <slot></slot>
@@ -64,6 +66,10 @@
     }
 </script>
 <style lang="scss">
+    @keyframes spin {
+        0%{ transform: rotate(0deg);}
+        100%{ transform: rotate(360deg);}
+    }
     .b-button{
         font-size: var(--font-size);
         height: var(--button-height);
@@ -105,6 +111,10 @@
             > .content{
                 order: 1;
             }
+        }
+        /*使用spin动画，1s完成，无限循环，linear线性*/
+        .loading{
+            animation: spin 1s infinite linear;
         }
     }
 </style>
