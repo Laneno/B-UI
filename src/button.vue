@@ -1,8 +1,11 @@
 <template>
-    <button class="b-button">b-button</button>
+    <button class="b-button">
+        <slot></slot>
+    </button>
 </template>
 <script>
-    export default {}
+    export default {
+    }
 </script>
 <style lang="scss">
     .b-button{

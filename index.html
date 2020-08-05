@@ -7,29 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{margin: 0; padding: 0;box-sizing: border-box;}
-        html{
-            --button-height: 32px;              /*高度*/
-            --font-size: 14px;                  /*字体*/
-            --button-bg: white;                 /*背景*/
-            --button-active-bg: #eee;           /*背景-按下*/
-            --border-radius: 4px;               /*边框圆角*/
-            --color: #333;                      /*文字颜色*/
-            --border-color: #999;               /*边框颜色*/
-            --border-color-hover: #666;         /*边框颜色-hover*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        #app{
+
+        html {
+            --button-height: 32px; /*高度*/
+            --font-size: 14px; /*字体*/
+            --button-bg: white; /*背景*/
+            --button-active-bg: #eee; /*背景-按下*/
+            --border-radius: 4px; /*边框圆角*/
+            --color: #333; /*文字颜色*/
+            --border-color: #999; /*边框颜色*/
+            --border-color-hover: #666; /*边框颜色-hover*/
+        }
+
+        #app {
             margin: 20px;
         }
-        body{
+
+        body {
             font-size: var(--font-size);
+        }
+    </style>
+    <style>
+        /*1em: 图标和字体大小一致*/
+        .icon {
+            width: 1em;
+            height: 1em;
         }
     </style>
 </head>
 <body>
 <div id="app">
-    <b-button></b-button>
+    <b-button>
+        <svg class="icon">
+            <use xlink:href="#i-settings"></use>
+        </svg>
+        按钮传参
+    </b-button>
 </div>
 <script src="./src/app.js"></script>
+<!--引入图标库-->
+<script src="//at.alicdn.com/t/font_1989058_ix3mlekzdc.js"></script>
 </body>
 </html>
