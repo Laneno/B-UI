@@ -39,7 +39,18 @@
 <script>
     // props:组件通信
     export default {
-        props:['icon', 'iconPosition']// left、right
+        // props:['icon', 'iconPosition']// left、right
+        props:{
+            icon:{},
+            iconPosition:{
+                type: String,
+                default: 'left',
+                validator(value){
+                    console.log(value)
+                    return value === 'left' || value === 'right';
+                }
+            }
+        }
     }
 </script>
 <style lang="scss">
