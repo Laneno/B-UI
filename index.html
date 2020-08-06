@@ -69,6 +69,13 @@
     <!--使用 b-icon 组件显示-->
     <b-icon name="download"></b-icon>
     <b-icon name="loading"></b-icon>
+    <!--带 loadling 的按钮-->
+    <b-button :loading="true">
+        左loading
+    </b-button>
+    <b-button :loading="true" icon-position="right">
+        右loading
+    </b-button>
 </div>
 <script src="./src/app.js"></script>
 <!--引入图标库-->
