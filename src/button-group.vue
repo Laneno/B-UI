@@ -4,7 +4,19 @@
         <slot></slot>
     </div>
 </template>
-<script></script>
+<script>
+    export default {
+        // 当 UI 出现在页面时触发
+        mounted(){
+            console.log(this.$el.children)
+            for(let node of this.$el.children) {
+                if(node.nodeName.toLowerCase() !== 'button'){
+                    console.warn(`b-button-group的子元素应该全是 b-group，但是你写的是${node.nodeName}`)
+                }
+            }
+        }
+    }
+</script>
 <style lang="scss">
     .b-button-group{
         display: inline-flex;
