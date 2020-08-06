@@ -27,7 +27,9 @@
                 /*border-left: none;  !* 存在BUG：没有了左侧 border *!*/
             /*}*/
             border-radius: 0;       /* 重置border-radius */
-            margin-left: -1px;      /* 方案二：让右边的border盖住左边的border */
+            &:not(:first-child){    /* 方案二：如果不是第一个元素，左移一个像素，让右边的border盖住左边的border */
+                margin-left: -1px;
+            }
             &:first-child{          /* b-button-group内部的第一个b-button */
                 border-top-left-radius: var(--border-radius);
                 border-bottom-left-radius: var(--border-radius);
