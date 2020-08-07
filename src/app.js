@@ -18,6 +18,8 @@ new Vue({
 
 // 单元测试
 import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies);
 const expect = chai.expect;
 
 // Button组件的单元测试：icon参数
@@ -78,5 +80,27 @@ const expect = chai.expect;
     // 测试完毕后，移除button并销毁实例
     vm.$el.remove();
     vm.$destroy();
+}
+
+// Button组件的单元测试：click 事件
+{
+    const Constructor = Vue.extend(Button);
+    const vm = new Constructor({
+        propsData: {
+            icon: 'settings'
+        }
+    });
+    vm.$mount()
+    // // 这样虽然可以触发断言，这样做是错误的
+    // // 因为我们要测的是 click 事件是否被触发
+    // vm.$on('click', function () {
+    //     expect(1).to.eq(1)
+    // })
+    // 检测 click 事件被触发，使用chai-spies中的监听函数
+    let spy = chai.spy(function () {})  // 使用间谍监听 function
+    vm.$on('click', spy);       // 如果vm的click被触发，就会执行spy这个间谍
+    let button = vm.$el;        // bButton.$el 就是 button
+    button.click();             // 触发 button 上的click 事件
+    expect(spy).to.have.been.called();  // 期望间谍已经被调用
 }
 
