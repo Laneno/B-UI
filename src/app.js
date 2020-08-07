@@ -26,38 +26,38 @@ const expect = chai.expect;
     // 动态生成一个按钮
     const Constructor = Vue.extend(Button); // 将Button组件变成一个构造函数(Button是一个VueComponent函数)
     // 通过 VueComponent 函数构造一个button
-    const button = new Constructor({        // 通过new button的构造函数,创建一个button实例
+    const vm = new Constructor({            // 通过new button的构造函数,创建一个button实例
         propsData: {
             icon: 'settings'
         }
     });
-    button.$mount('#test')                  // 将button实例挂载到test上
-    let useElement = button.$el.querySelector('use')    // 在button元素中找use元素
+    vm.$mount('#test')                      // 将button实例挂载到test上
+    let useElement = vm.$el.querySelector('use')    // 在button元素中找use元素
     console.log(useElement)
-    let href = useElement.getAttribute('xlink:href')    // 拿到useElement中xlink:href元
+    let href = useElement.getAttribute('xlink:href')        // 拿到useElement中xlink:href元
     expect(href).to.eq('#i-settings')                      // 断言: 我主观认为useElement中xlink:href元素值为settings
     // 测试完毕后，移除button并销毁实例
-    button.$el.remove();
-    button.$destroy();
+    vm.$el.remove();
+    vm.$destroy();
 }
 
 // Button组件的单元测试：loading参数
 {
     const Constructor = Vue.extend(Button);
-    const button = new Constructor({
+    const vm = new Constructor({
         propsData: {
             icon: 'settings',
             loading: true               // 添加loading参数
         }
     });
-    button.$mount()                     // $mount不写就是放到内存中
-    let useElement = button.$el.querySelector('use')
+    vm.$mount()                     // $mount不写就是放到内存中
+    let useElement = vm.$el.querySelector('use')
     console.log(useElement)
     let href = useElement.getAttribute('xlink:href')
     expect(href).to.eq('#i-loading')    // loading 为 true 时，settings 是看不到的，所以断言值为#i-loading
     // 测试完毕后，移除button并销毁实例
-    button.$el.remove();
-    button.$destroy();
+    vm.$el.remove();
+    vm.$destroy();
 }
 
 // Button组件的单元测试：iconPosition参数 + order
@@ -65,17 +65,18 @@ const expect = chai.expect;
     const div = document.createElement('div');  // 创建一个 div，并添加到 body
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button);
-    const button = new Constructor({
+    const vm = new Constructor({
         propsData: {
             icon: 'settings',
             iconPosition: 'right'               // iconPosition为right 时 order 应为 2
         }
     });
-    button.$mount(div)                          // button挂载到 div（元素挂载到dom才会渲染，否则order取不到）
-    let svg = button.$el.querySelector('svg')   // 获取 svg 中的 order
+    vm.$mount(div)                          // button挂载到 div（元素挂载到dom才会渲染，否则order取不到）
+    let svg = vm.$el.querySelector('svg')   // 获取 svg 中的 order
     let { order } = window.getComputedStyle(svg);
     expect(order).to.eq("2")                    // css中的值都是字符串
     // 测试完毕后，移除button并销毁实例
-    button.$el.remove();
-    button.$destroy();
+    vm.$el.remove();
+    vm.$destroy();
 }
+
